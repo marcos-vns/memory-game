@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="src/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/style.css">
     <title>Memory Game</title>
 </head>
 <body>
-    <p class="score">Pontuação: <span class="points">0</span></p>
-    <div class="buttons">
+    <div class="game">
+        <div class="score">
+            <p>Pontuação: <span class="points">0</span></p>
+            <p>Recorde: <span class="record">0</span></p>
+        </div>
+        <div class="buttons">
         <button class="red btn" id="0"></button>
         <button class="blue btn" id="1"></button>
         <button class="green btn" id="2"></button>
@@ -16,6 +24,13 @@
     </div>
     <p class="message">Botão errado! Fim de jogo</p>
     <button class="start">Iniciar</button>
+    </div>
+    <article>
+        <h1>Como jogar?</h1>
+        <p>Ao iniciar o jogo você será apresentado a uma sequência de botões e sua missão é conseguir repetir a ordem em que foram apresentados</p>
+        <p>Começando com apenas 1 cor, eles vão acumulando e a partida terminará quando um botão for apertado no momento errado</p>
+        <p>Por exemplo: na primeira rodada a sequência é apenas <span class="span-red">vermelho</span>. Na segunda é <span class="span-red">vermelho</span> e <span class="span-blue">azul</span>. Depois <span class="span-red">vermelho</span>, <span class="span-blue">azul</span> e <span class="span-blue">azul</span> de novo, e assim por diante</p>
+    </article>
     <script src="src/script.js"></script>
 </body>
 </html>

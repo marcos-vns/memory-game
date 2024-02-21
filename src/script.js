@@ -3,17 +3,26 @@ startBtn.addEventListener('click', handleGame);
 const buttons = document.querySelectorAll('.btn');
 
 const points = document.querySelector('.points');
+const record = document.querySelector('.record');
 
 const message = document.querySelector('.message');
 message.style.display = 'none';
 
-let ind=0;
+let ind = 0;
 
 let sequence = [];
 let attempt = [];
 
-function handleGame(){
-    startBtn.style.display = 'none';
+function handleGame(evt){
+    if(evt){
+        if(Number(points.innerHTML) > Number(record.innerHTML)){
+            record.innerHTML = points.innerHTML;;
+        }
+        points.innerHTML = "0";
+        sequence = [];
+    }
+
+    startBtn.style.visibility = 'hidden';
     message.style.display = 'none';
 
     addSequence();
@@ -34,9 +43,9 @@ function playSequence(){
 
     const interval = setInterval(() => {
         const currentIndex = sequence[i];
-        const currentButton = buttons[currentIndex]; // rather than buttons[sequence[i]] (why);
+        const currentButton = buttons[currentIndex];
 
-        currentButton.style.border = '2px solid #000';
+        currentButton.style.border = '4px solid #000';
         i++;
         setTimeout(() => {
             currentButton.style.border = '';
@@ -56,24 +65,21 @@ function waitInput(){
 }
 
 function guessSequence(evt){
-        let elementAttempt = Number(evt.target.id);
-        
-        if(elementAttempt === sequence[ind]){
-            console.log(ind);
-            console.log(elementAttempt, sequence[ind]);
-            ind++;
-        }
-        else{
-            console.log(elementAttempt, sequence[ind]);
-            message.style.display = 'block';
-            startBtn.innerHTML = "Jogar novamente";
-            startBtn.style.display = 'block';
-            ind = 0;
-        }
+    let elementAttempt = Number(evt.target.id);
+    
+    if(elementAttempt === sequence[ind]){
+        ind++;
+    }
+    else{
+        message.style.display = 'block';
+        startBtn.innerHTML = "Jogar novamente";
+        startBtn.style.visibility = 'visible';
+        ind = 0;
+    }
 
-        if(ind == sequence.length){
-            points.innerHTML = Number(points.innerHTML) + 1;
-            ind = 0;
-            handleGame();
-        }
+    if(ind == sequence.length){
+        points.innerHTML = Number(points.innerHTML) + 1;
+        ind = 0;
+        handleGame();
+    }
 }
