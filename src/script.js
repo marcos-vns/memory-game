@@ -16,7 +16,7 @@ let attempt = [];
 function handleGame(evt){
     if(evt){
         if(Number(points.innerHTML) > Number(record.innerHTML)){
-            record.innerHTML = points.innerHTML;;
+            record.innerHTML = points.innerHTML;
         }
         points.innerHTML = "0";
         sequence = [];
